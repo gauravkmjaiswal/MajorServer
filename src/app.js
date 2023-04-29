@@ -9,7 +9,7 @@ const bcrypt= require("bcryptjs")
 const auth=require("./middleware/auth")
 const app = express()
 const { v4: uuidv4 } = require('uuid')
-const port= process.env.PORT || 8000
+const port= process.env.PORT || 4000
 require("./db/connection.js")
 const User=require("./models/registers")
 const Trnx = require("./models/transactions")
