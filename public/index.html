@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../bundle.js"></script>
+    <script src="bundle.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,12 +15,19 @@
         document.getElementById('connect-button').addEventListener('click',async (event)=>{
 
             try{
+
                 let Web3 = window.web;
                 const web3 = new Web3(window.ethereum);
-                web3.eth.getAccounts((error, accounts) => {
+
+                web3.eth.getAccounts(async (error, accounts) => {
                 if (error) {
-                    console.error(error);
+                    console.error(error+"here buddy");
                 } else {
+                    
+                    if(accounts.length==0)
+                    {
+                        await ethereum.enable();
+                    }
                     const account = accounts[0];
                     // You can use the account variable to transfer tokens
                     const tokenContractAddress = '0xb6ebD3248beC5AAd05902bB5F6cAF648A5765c0c';
@@ -296,7 +303,7 @@
 
             }catch(e)
             {
-                console.log(e)
+                console.log(e+"ok fine")
             }
 
             
