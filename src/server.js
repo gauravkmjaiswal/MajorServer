@@ -175,7 +175,7 @@ app.post('/signup',async (req,res)=>{
     
 })
 
-app.post('/updateBalance',async(req,res)=>{
+app.post('/updateBalanceByHash',async(req,res)=>{
     const { enrollmentNumber ,trnxHash } = req.body;
     try {
         const hash = await Trnx.findOne({trnxHash});
