@@ -272,7 +272,7 @@ app.post('/transfer', async( req, res) => {
         // res.json({
         //     Description:`Tokens transferred successfully!`
         // })
-        res.status(200).json({"transactionHash:":trnxHash })
+        res.status(200).json({"transactionHash":trnxHash })
 
     }catch(error)
     {
