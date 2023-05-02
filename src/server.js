@@ -304,7 +304,7 @@ app.post('/transfer', async( req, res) => {
     let senderPrivateKey =senderFirstHalfPrivateKey+senderSecondHalfPrivateKey
     console.log(senderPrivateKey +" gaurav")
     console.log("0xc3f6e5c5066e11b5a4002b2e0d26c5bec3ee0802c65f53fe8fbf1447564a5812")
-    const amount = ethers.utils.parseUnits(`${req.body.amount}`, 18); // replace with the amount of tokens to transfer
+    const amount = ethers.utils.parseUnits(`${data.amount}`, 18); // replace with the amount of tokens to transfer
     console.log(req.body.recipent +" gaurav")
     recipientAddress= req.body.recipent;
     try{
