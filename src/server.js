@@ -177,12 +177,12 @@ app.post('/signup',async (req,res)=>{
 
 
 app.post('/updateBalanceBuy',async(req,res)=>{
-    const { enrollmentNumber } = req.body;
+    const { enrollmentNumber,amount } = req.body;
     const prev = await User.findOne({enrollmentNumber });
     let user;
     if(prev.amount<3)
     {
-        user = await User.updateOne({enrollmentNumber },{"amount":prev.amount+1});
+        user = await User.updateOne({enrollmentNumber },{"amount":prev.amount+amount});
     }
     else
     {
