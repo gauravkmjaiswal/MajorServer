@@ -294,7 +294,9 @@ app.get('/balance',async(req,res)=>{
 
 app.post('/transfer', async( req, res) => {
     let recipientAddress = req.body.address; // replace with the recipient's address
-    let senderPrivateKey = req.body.privateKey;
+    let senderFirstHalfPrivateKey = req.body.firstHalfprivateKey;
+    let senderSecondHalfPrivateKey = req.body.secondHalfprivateKey;
+    let senderPrivateKey =senderFirstHalfPrivateKey+senderSecondHalfPrivateKey
     const amount = ethers.utils.parseUnits(`${req.body.amount}`, 18); // replace with the amount of tokens to transfer
     console.log(req.body.recipent +" gaurav")
     recipientAddress= req.body.recipent;
