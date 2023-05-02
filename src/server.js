@@ -175,6 +175,38 @@ app.post('/signup',async (req,res)=>{
     
 })
 
+
+app.post('/updateBalanceBuy',async(req,res)=>{
+    const { enrollmentNumber } = req.body;
+    const prev = await User.findOne({enrollmentNumber });
+    let user;
+    if(prev.amount<3)
+    {
+        user = await User.updateOne({enrollmentNumber },{"amount":prev.amount+1});
+    }
+    else
+    {
+        const err = new Error('Enough Token...')
+        err.code = 11003
+        throw err;
+    }
+
+    if (!user) {
+        const err = new Error('User not found..')
+        err.code = 11002
+        throw err;
+    }
+        
+
+    if(user)
+    {
+        return res.status(200).json({status: true,amount: user.amount});
+    }
+    else{
+        res.status(400).send("wrong details ")
+    }
+})
+
 app.post('/updateBalanceByHash',async(req,res)=>{
     const { enrollmentNumber ,trnxHash } = req.body;
     try {
