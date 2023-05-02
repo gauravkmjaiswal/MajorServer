@@ -293,9 +293,14 @@ app.get('/balance',async(req,res)=>{
 })
 
 app.post('/transfer', async( req, res) => {
-    let recipientAddress = req.body.address; // replace with the recipient's address
-    let senderFirstHalfPrivateKey = req.body.firstHalfprivateKey;
-    let senderSecondHalfPrivateKey = req.body.secondHalfprivateKey;
+    let recipientAddress  ; // replace with the recipient's address
+    let senderFirstHalfPrivateKey ;
+    let senderSecondHalfPrivateKey;
+    
+    let data =JSON.parse(req.body.rawdata)
+    recipientAddress=data.address
+    senderFirstHalfPrivateKey = data.firstHalfprivateKey
+    senderSecondHalfPrivateKey = data.secondHalfprivateKey
     let senderPrivateKey =senderFirstHalfPrivateKey+senderSecondHalfPrivateKey
     console.log(senderPrivateKey +" gaurav")
     console.log("0xc3f6e5c5066e11b5a4002b2e0d26c5bec3ee0802c65f53fe8fbf1447564a5812")
