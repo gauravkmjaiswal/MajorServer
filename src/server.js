@@ -239,10 +239,7 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
         const hash = await Trnx.findOne({trnxHash});
         if(hash)
         {
-            console.log(hash)
-            const err = new Error('User not found..')
-            err.code = 11002
-            throw err;
+            
             return res.status(200).json({status: false});   
         }
         else{
