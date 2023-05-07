@@ -240,7 +240,7 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
         if(hash)
         {
             
-            return res.status(200).json({status: false});   
+            return res.status(200).json({answer: false});   
         }
         else{
             console.log("ok")
@@ -249,7 +249,7 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
             });
 
             const finalHash= await newHash.save()
-            return res.status(200).json({status: true});
+            return res.status(200).json({answer: true});
         }
         
 
