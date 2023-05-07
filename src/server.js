@@ -233,7 +233,7 @@ app.post('/updateBalanceUse',async(req,res)=>{
 })
 
 app.post('/updateBalanceByHash',async(req,res)=>{
-    const { enrollmentNumber ,trnxHash } = req.body;
+    const {trnxHash } = req.body;
     try {
         const hash = await Trnx.findOne({trnxHash});
         if(hash)
