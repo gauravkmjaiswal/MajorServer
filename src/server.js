@@ -232,8 +232,9 @@ app.post('/updateBalanceUse',async(req,res)=>{
     }
 })
 
-app.post('/updateBalanceByHash',async(req,res)=>{
-    const {trnxHash } = req.body;
+app.get('/updateBalanceByHash/:id',async(req,res)=>{
+    
+    const trnxHash  = req.params.id;
     try {
         const hash = await Trnx.findOne({trnxHash});
         if(hash)
