@@ -27,6 +27,10 @@ const userSchema= new mongoose.Schema({
         type:Number,
         // required:true
     },
+    totalBuy:{
+        type:Number,
+        // required:true
+    },
     tokens:[{
         token:{
             type:String,

@@ -149,7 +149,8 @@ app.post('/signup',async (req,res)=>{
                     studentType,
                     privateKey,
                     address,
-                    amount:0
+                    amount:0,
+                    totalBuy:0
                 });
                 // console.log("hello guys")
                 const token=await user.generateAuthToken();
@@ -182,7 +183,7 @@ app.post('/updateBalanceBuy',async(req,res)=>{
     let user;
     if(prev.amount<3)
     {
-        user = await User.updateOne({enrollmentNumber },{"amount":prev.amount+amount});
+        user = await User.updateOne({enrollmentNumber },{"amount":prev.amount+amount,"totalBuy":prev.totalBuy+1});
     }
     else
     {
@@ -291,6 +292,7 @@ app.get('/balance',async(req,res)=>{
             }
     }
 })
+
 
 app.post('/transfer', async( req, res) => {
     let recipientAddress = req.body.address; // replace with the recipient's address
