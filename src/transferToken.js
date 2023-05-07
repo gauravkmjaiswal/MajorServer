@@ -266,7 +266,7 @@ async function transferTokens(recipientAddress, amount ,senderPrivateAddress) {
 
   // const gasLimit = await tokenContract.estimateGas.transfer(recipientAddress, amount) ;
   // const tx = await tokenContract.transfer(recipientAddress, amount, {  gasLimit: gasLimit * 4  });
-  const gasPrice = ethers.utils.parseUnits('1000', 'gwei'); // replace with your desired gas price
+  const gasPrice = ethers.utils.parseUnits('10', 'gwei'); // replace with your desired gas price
   const gasLimit = await tokenContract.estimateGas.transfer(recipientAddress, amount);
   const tx = await tokenContract.transfer(recipientAddress, amount, { gasLimit:gasLimit*20, gasPrice });
   console.log(tx)
