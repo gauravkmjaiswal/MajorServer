@@ -236,8 +236,9 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
     
     const trnxHash  = req.params.id;
     try {
-        const hash = await Trnx.findOne({trnxHash});
-        if(hash)
+        const hash = await Trnx.find({trnxHash});
+        console.log(hash)
+        if(hash.length!=0)
         {
             
             return res.status(200).json({answer: false});   
