@@ -239,21 +239,25 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
         const hash = await Trnx.findOne({trnxHash});
         if(hash)
         {
-            const err = new Error('Token Not Valid')
-            err.code = 11003
+            console.log(hash)
+            const err = new Error('User not found..')
+            err.code = 11002
             throw err;
+            return res.status(200).json({status: false});   
         }
         else{
+            console.log("ok")
             const newHash = await Trnx.create({
                 trnxHash
             });
 
             const finalHash= await newHash.save()
+            return res.status(200).json({status: true});
         }
         
 
         
-        return res.status(200).json({status: true});
+        
        
 
     }catch(error){
