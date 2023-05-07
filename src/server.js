@@ -238,12 +238,8 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
     try {
         const hash = await Trnx.find({trnxHash});
         console.log(hash)
-        if(hash.length!=0)
+        if(hash.length==0)
         {
-            
-            return res.status(200).json({answer: false});   
-        }
-        else{
             console.log("ok")
             const newHash = await Trnx.create({
                 trnxHash
@@ -252,7 +248,9 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
             const finalHash= await newHash.save()
             return res.status(200).json({answer: true});
         }
-        
+        else{
+            return res.status(200).json({answer: false});
+        }
 
         
         
