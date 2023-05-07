@@ -211,18 +211,11 @@ app.post('/updateBalanceBuy',async(req,res)=>{
 app.post('/updateBalanceUse',async(req,res)=>{
     const { enrollmentNumber,amount } = req.body;
     const prev = await User.findOne({enrollmentNumber });
+    console.log(prev)
     let user;
-    if(prev.amount<=3)
-    {
-        user = await User.updateOne({enrollmentNumber },{"amount":prev.amount-amount,"totalBuy":prev.totalBuy-amount});
-    }
-    else
-    {
-        const err = new Error('Enough Token...')
-        err.code = 11003
-        throw err;
-    }
-
+  
+    user = await User.updateOne({enrollmentNumber },{"amount":prev.amount-amount});
+  
     if (!user) {
         const err = new Error('User not found..')
         err.code = 11002
@@ -256,33 +249,11 @@ app.post('/updateBalanceByHash',async(req,res)=>{
 
             const finalHash= await newHash.save()
         }
-        const prev = await User.findOne({enrollmentNumber });
-        let user;
-        if(prev.amount>0)
-        {
-            user = await User.updateOne({enrollmentNumber },{"amount":prev.amount-1});
-        }
-        else
-        {
-            const err = new Error('Not Enough Token...')
-            err.code = 11003
-            throw err;
-        }
+        
 
-        if (!user) {
-            const err = new Error('User not found..')
-            err.code = 11002
-            throw err;
-        }
-           
-
-        if(user)
-        {
-            return res.status(200).json({status: true,amount: user.amount});
-        }
-        else{
-            res.status(400).send("wrong details this")
-        }
+        
+        return res.status(200).json({status: true});
+       
 
     }catch(error){
         console.log(error)
