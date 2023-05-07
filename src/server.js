@@ -212,7 +212,7 @@ app.post('/updateBalanceUse',async(req,res)=>{
     const { enrollmentNumber,amount } = req.body;
     const prev = await User.findOne({enrollmentNumber });
     let user;
-    if(prev.amount<3)
+    if(prev.amount<=3)
     {
         user = await User.updateOne({enrollmentNumber },{"amount":prev.amount-amount,"totalBuy":prev.totalBuy-amount});
     }
