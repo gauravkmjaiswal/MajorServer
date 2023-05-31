@@ -245,7 +245,7 @@ app.get('/updateBalanceByHash/:id',async(req,res)=>{
                 trnxHash
             });
 
-            const finalHash= await newHash.save()
+            await newHash.save()
             return res.status(200).json({answer: true});
         }
         else{
